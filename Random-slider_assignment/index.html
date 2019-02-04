@@ -2,32 +2,48 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+<!-- custom style-->
 <link rel="stylesheet" type="text/css" href="css/style.css">
+
+<!--javascript library-->
+<script src="lib/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 </head>
 <body>
-
+<!-- Random slider container  start -->
 <div id="slideshow-container">
-    <div class="slidecontent">
-    	
+    <div class="slidecontent">    	
     </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>  
 </div>  
+
+<!--Random slider container end-->
 
 <script type="text/javascript">
 
-$(document).ready(function () {
+	$(document).ready(function () {
 
-    $('#slideshow-container').slide({ 'delay': 3000, 'fadeSpeed': 2000 });
+	   var slide =  $('#slideshow-container').slide({ 'delay': 3000});
 
-});
+	   $(".next").click(function() {   // click for next  slide.
 
+	          slide.plusSlides(1);
+	    });
+	   $(".prev").click(function() {  // click for prev  slide.
+
+	          slide.plusSlides(-1);
+	    });
+	});
 </script>  
 
+<!--custom plugin-->
 <script src="js/random_slide.js"></script>
+
 </body>
 </html> 
+
+
