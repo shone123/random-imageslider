@@ -7,9 +7,16 @@
         }, settings);
 
         var slideIndex = 1;
-        $.getJSON("https://picsum.photos/listed", fetchData, error); // fetch image details list call success callback   
+        getData();    
+      
+    function getData(){
+
+        var baseUrl = "https://picsum.photos/list";
+        $.getJSON(baseUrl , initSlide);
+
+    }  // fetch image details list call success callback   
         
-    function fetchData(data) {
+    function initSlide(data) {
         var arr = [], i;
         let randomImageIndex;
         var dispSlide;
