@@ -12,7 +12,7 @@
     function getData(){
 
         var baseUrl = "https://picsum.photos/list";
-        $.getJSON(baseUrl , initSlide);
+        $.getJSON(baseUrl , initSlide, error);
 
     }  // fetch image details list call success callback   
         
