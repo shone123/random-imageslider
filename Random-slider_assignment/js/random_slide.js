@@ -70,7 +70,7 @@
         showSlides(slideIndex += n);
     }
 
-    setInterval(plusSlides, 3000, 1);   // call plusSlides on specific interval
+    setInterval(plusSlides, config.delay, 1);   // call plusSlides on specific interval
 
     return {                            // return function collection for use outside
         showSlides: showSlides,  
