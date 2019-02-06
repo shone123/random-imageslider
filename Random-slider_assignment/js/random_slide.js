@@ -12,6 +12,7 @@
             slideIndex = 1;   // initial slideindex value.
             arr = [];
         getData();    // it is calling on call slide.
+        autoSlide();  // this function is used for autoslide.
       
     function getData() {  // fetch image details list and call success and error callback.
         var baseUrl = "https://picsum.photos/list";  // this is the base url for fetch image details list.
@@ -60,7 +61,9 @@
         showSlides(slideIndex += n);
     }
 
-    setInterval(plusSlides, config.delay, 1);   // call plusSlides on specific interval
+    function autoSlide(){
+        setInterval(plusSlides, config.delay, 1); // call plusSlides on specific interval
+    }  
 
     return {                            // return collection of methods for use outside.
         showSlides: showSlides,  
