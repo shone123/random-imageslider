@@ -3,10 +3,13 @@
     $.fn.slide = function (settings) {
 
         var config = $.extend({
-            delay: null
+            delay: null,
+            items: null
         }, settings);
 
-        var slideIndex = 1;
+        var slideIndex, arr;
+            slideIndex = 1;
+            arr = [];
         getData();    
       
     function getData(){
@@ -17,28 +20,21 @@
     }  // fetch image details list call success callback   
         
     function initSlide(data) {
-        var arr = [], i;
+        var  i, dispSlide;
         let randomImageIndex;
-        var dispSlide;
 
-        for(var i = 0; i< 10; i++ ){                           //to get random array list
+        for(var i = 0; i< config.items; i++ ){                           //to get random array list
 
             randomImageIndex = Math.floor(Math.random() * data.length);
             arr.push(data[randomImageIndex]);
         }
-
-        if ( Modernizr.localstorage || typeof(Storage) !== "undefined" ) {
-
-           localStorage.setItem("images", JSON.stringify(arr));    //store random array list in a webstorage. 
-        } else {
-           console.log("Sorry! No Web Storage support.."); 
-        }              
+        
         dispSlide = `
                     <div class="mySlides fade">                        
                         <img src="https://picsum.photos/200/300/?image=${arr[slideIndex -1]["id"]}" alt="">
                         <div class="text">${arr[slideIndex -1]["author"]}</div>
                     </div>`
-        $(".slidecontent").html(dispSlide);  
+        $(".slidecontent").html(dispSlide);
     }
 
     function error(jqXHR, textStatus, errorThrown) {
@@ -49,14 +45,12 @@
 
     function showSlides(n){ 
 
-        var slideArray = JSON.parse(localStorage.getItem("images") || "[]"); // get 10 random array list from webstorage  
-        var slides , itemSlide;
+       var slides , itemSlide, slideArray;        
+        slideArray = arr;
         slides = slideArray.length;
     
         if ( n > slides ) { slideIndex = 1 }    
         if ( n < 1 ) { slideIndex = slides }
-
-        $(".mySlides").remove();  // remove existing div from dom
 
         itemSlide = `
                     <div class="mySlides fade">                        
